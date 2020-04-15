@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <AssemblyTitle>CommandDotNet.FluentValidation</AssemblyTitle>
+    <Description>Uses FluentValidation validators to validate arguments defined using an IArgumentModel</Description>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Remove="output\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Remove="output\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="output\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="FluentValidation" Version="8.0.0" />
+    <PackageReference Include="FluentValidation.ValidatorAttribute" Version="8.0.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CommandDotNet\CommandDotNet.csproj" />
+  </ItemGroup>
+
+</Project>

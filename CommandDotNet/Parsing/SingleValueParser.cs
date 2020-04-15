@@ -1,6 +1,6 @@
 ﻿using System;
-using CommandDotNet.Exceptions;
-using CommandDotNet.Models;
+using System.Collections.Generic;
+using CommandDotNet.Extensions;
 using CommandDotNet.TypeDescriptors;
 
 namespace CommandDotNet.Parsing
@@ -13,29 +13,17 @@ namespace CommandDotNet.Parsing
         {
             _argumentTypeDescriptor = argumentTypeDescriptor;
         }
-        
-        public dynamic Parse(ArgumentInfo argumentInfo)
+
+        public object Parse(IArgument argument, IEnumerable<string> values)
         {
-            var value = argumentInfo.ValueInfo.Value;
-            return ParseString(argumentInfo, value);
+            return _argumentTypeDescriptor.ParseString(argument, 
+                values.SingleOrDefaultOrThrow(() => ThrowMultiForSingleEx(argument)));
         }
 
-        public dynamic ParseString(ArgumentInfo argumentInfo, string value)
+        private static void ThrowMultiForSingleEx(IArgument argument)
         {
-            try
-            {
-                return _argumentTypeDescriptor.ParseString(argumentInfo, value);
-            }
-            catch (FormatException)
-            {
-                throw new ValueParsingException(
-                    $"'{value}' is not a valid {_argumentTypeDescriptor.GetDisplayName(argumentInfo)}");
-            }
-            catch (ArgumentException)
-            {
-                throw new ValueParsingException(
-                    $"'{value}' is not a valid {_argumentTypeDescriptor.GetDisplayName(argumentInfo)}");
-            }
+            var message = $"{argument.GetType().Name}:{argument.Name} accepts only a single value but multiple values were provided";
+            throw new CommandParsingException(argument.Parent, message);
         }
     }
 }

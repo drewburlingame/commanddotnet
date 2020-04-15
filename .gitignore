@@ -8,3 +8,5 @@ CommandDotNet.sln.DotSettings.user
 *.ncrunchsolution.user
 public
 site/
+*.user
+/CommandDotNet.Example/CommandDotNet.Example.exe

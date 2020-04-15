@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <AssemblyTitle>CommandDotNet.TestTools</AssemblyTitle>
+    <Description>Test your CommandDotNet application</Description>
+    <PackageTags>dotnet core; console; argument parse; test;</PackageTags>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Remove="output\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Remove="output\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="output\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="FluentAssertions" Version="5.10.2" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CommandDotNet\CommandDotNet.csproj" />
+  </ItemGroup>
+</Project>

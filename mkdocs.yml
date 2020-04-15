@@ -1,45 +1,80 @@
 site_name: CommandDotNet
+site_description: Model your command line application interface in a class
 repo_name: 'bilal-fazlani/commanddotnet'
 repo_url: 'https://github.com/bilal-fazlani/commanddotnet'
-site_url: https://bilal-fazlani.github.io/commanddotnet
+
+strict: true
+
 nav:
-    - Introduction: index.md
-    - Quick Start: quick-start.md
-    - Defining Commands:
-      - Parameters: parameters.md
-      - Attributes: attributes.md
-      - Constructors: constructors.md
-      - Default method: default-method.md
-      - Default values: default-values.md
-      - Collections: collections.md
-      - Argument Models: argument-models.md
-      - Async methods: async-methods.md
-      - Custom return codes: custom-return-codes.md
-      - Nesting commands: nesting-commands.md
-      - Exceptions: exceptions.md
-    - Extras:
-      - directives.md
-      - Fluent validation for parameters: fluent-validation-for-argument-models.md
-      - Settings: settings.md
-    - Extensibility:
-      - Dependency Injection: dependency-injection.md
-      - Parameter types: parameter-types.md
-      - Custom interceptors: custom-interceptors.md
-    - v3:
-      - V3/v3-changes.md
-      - V3/middleware.md
-      - V3/cancellation.md
-      - V3/interceptors.md
-      - V3/parameter-resolvers.md
-      - V3/piped-arguments.md
-      - V3/response-files.md
-# theme: readthedocs
+    - Documentation:
+      - Introduction: index.md
+      - features.md
+      - getting-started.md
+      - argument-terminology.md
+      - Commands:
+        - Commands/commands.md
+        - Commands/subcommands.md
+      - Arguments:
+        - Arguments/arguments.md
+        - Collections: Arguments/argument-collections.md
+        - Data Types: Arguments/argument-types.md
+        - Arguments/passwords.md 
+        - Argument Models: Arguments/argument-models.md
+        - Arguments/argument-arity.md
+        - Arguments/option-or-operand.md
+        - Arguments/fluent-validation-for-argument-models.md
+      - Argument Values:
+        - ArgumentValues/argument-separator.md
+        - ArgumentValues/piped-arguments.md
+        - ArgumentValues/prompting.md
+        - ArgumentValues/response-files.md
+        - AppSettings and<br/>Environment Variables: ArgumentValues/default-values-from-config.md
+      - Help:
+        - Help/help.md
+        - Help/typo-suggestions.md
+      - Diagnostics:
+        - Diagnostics/app-version.md
+        - Diagnostics/debug-directive.md
+        - Diagnostics/parse-directive.md
+        - Diagnostics/command-logger.md
+        - Diagnostics/exceptions.md
+      - Other Features:
+        - OtherFeatures/default-middleware.md
+        - Ctrl+C and<br/>CancellationToken: OtherFeatures/cancellation.md
+        - OtherFeatures/dependency-injection.md
+        - OtherFeatures/name-casing.md
+        - OtherFeatures/newer-release-alerts.md
+      - Extensibility:
+        - Extensibility/directives.md
+        - Extensibility/parameter-types.md
+        - Extensibility/parameter-resolvers.md
+        - Extensibility/middleware.md
+        - Extensibility/interceptors.md 
+        - Extensibility/token-transformations.md
+      - test-tools.md
+    - Release Notes:
+      - ReleaseNotes/whats-new-in-v3.md
+      - ReleaseNotes/CommandDotNet.md
+      - ReleaseNotes/CommandDotNet.FluentValidation.md
+      - ReleaseNotes/CommandDotNet.IoC.Autofac.md
+      - ReleaseNotes/CommandDotNet.IoC.MicrosoftDependencyInjection.md
+      - ReleaseNotes/CommandDotNet.IoC.SimpleInjector.md
+      - ReleaseNotes/CommandDotNet.NameCasing.md
+      - ReleaseNotes/CommandDotNet.TestTools.md
+    - Roadmap: 
+      - ReleaseNotes/roadmap.md
 theme:
+  features:
+    - tabs
+    - instant
   name: 'material'
+  icon:
+    repo: fontawesome/brands/github
+  favicon: 'img/favicon.ico'
   palette:
-    primary: 'indigo'
-    accent: 'pink'  
-  logo: 'img/logo.png'
+    primary: 'black'
+    accent: 'red'  
+  logo: 'img/small-logo.svg'
 
 google_analytics:
   - 'UA-39358317-3'
@@ -48,7 +83,8 @@ google_analytics:
 markdown_extensions:
   - admonition
   - attr_list
-  - codehilite
+  - codehilite:
+      linenums: true
   - pymdownx.arithmatex
   - pymdownx.betterem:
       smart_enable: all
@@ -57,26 +93,30 @@ markdown_extensions:
   - pymdownx.details
   - pymdownx.emoji:
       emoji_generator: !!python/name:pymdownx.emoji.to_svg
+  - pymdownx.escapeall:
+      nbsp: true
   - pymdownx.inlinehilite
   - pymdownx.magiclink
   - pymdownx.mark
   - pymdownx.smartsymbols
   - pymdownx.superfences
+  - pymdownx.tabbed
   - pymdownx.tasklist:
       custom_checkbox: true
   - pymdownx.tilde
   - toc:
-     permalink: "#"
+     permalink: "#"   
+
+plugins:
+  - search
+  # - git-revision-date-localized
 
 # Customization
 extra:
-  disqus: 'command-dot-net'
   social:
-    - type: 'github'
+    - icon: fontawesome/brands/github
       link: 'https://github.com/bilal-fazlani'
-    - type: 'twitter'
+    - icon: fontawesome/brands/twitter
       link: 'https://twitter.com/bilal_fazlani'
-    - type: 'linkedin'
+    - icon: fontawesome/brands/linkedin
       link: 'https://www.linkedin.com/in/bilal-fazlani/'
-  
-extra_css: ['commanddotnet/superfences.css', 'superfences.css']
